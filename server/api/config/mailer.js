@@ -2,13 +2,11 @@ const nodemailer = require('nodemailer');
 const hbs = require("nodemailer-express-handlebars")
 
 let transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    service: 'gmail',
-    secure: false,
-    port:587,
+    host: "smtp.mailtrap.io",
+    port: 2525,
     auth: {
-        user: process.env.GMAIL_EMAIL,
-        pass: process.env.GMAIL_PASSWORD
+      user: "1e5442ee7d54e0",
+      pass: "ff8b92ce4ef225"
     }
 });
 const handlebarOptions = {
