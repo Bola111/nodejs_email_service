@@ -9,7 +9,6 @@ exports.registerNewUser = async (req, res) => {
             phone: req.body.phone
         })
         let addedUser = user;
-
         if (addedUser) {
             mailer.welcomeMail(req.body.email, req.body.name)
         }
