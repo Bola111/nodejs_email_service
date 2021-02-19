@@ -3,8 +3,9 @@ const hbs = require("nodemailer-express-handlebars")
 
 
 let transporter = nodemailer.createTransport({
-    service: 'gmail',
+    host: "smtp.gmail.com",
     secure: false,
+    port: 587,
     auth: {
         user: process.env.GMAIL_EMAIL,
         pass: process.env.GMAIL_PASSWORD
