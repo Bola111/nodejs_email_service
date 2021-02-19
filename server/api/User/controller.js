@@ -11,6 +11,7 @@ exports.registerNewUser = async (req, res) => {
         let addedUser = user;
         if (addedUser) {
             console.log(process.env.GMAIL_EMAIL)
+            console.log(process.env.GMAIL_PASSWORD)
             mailer.welcomeMail(req.body.email, req.body.name)
         }
 
