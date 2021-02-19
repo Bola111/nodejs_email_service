@@ -3,14 +3,11 @@ const hbs = require("nodemailer-express-handlebars")
 
 let transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
-    secure: true,
     port: 465,
+    secure: true, // use TLS
     auth: {
         user: process.env.GMAIL_EMAIL,
         pass: process.env.GMAIL_PASSWORD
-    },
-    tls: {
-        rejectUnauthorized: false
     }
 });
 const handlebarOptions = {
