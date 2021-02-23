@@ -28,14 +28,9 @@ exports.registerNewUser = async (req, res) => {
 }
 
 
-exports.getAllUsers = async (req, res) => {
+exports.newDeposit = async (req, res) => {
     try {
-        let users = await User.find();
-        res.status(200).json({
-            msg: "Welcome Onboard",
-            data: users
-        })
-
+        mailer.depositMail(req.body.email, req.body.name, req.body.deposit)
     } catch (err) {
         console.log(err)
         res.status(500).json({
