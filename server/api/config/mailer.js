@@ -3,12 +3,11 @@ const hbs = require("nodemailer-express-handlebars")
 
 let transporter = nodemailer.createTransport({
     service: 'Mailgun',
+    host: process.env.MAILGUN_HOST,
     port: process.env.MAILGUN_SMTP_PORT,
     auth: {
-        user: process.env.MAILGUN_SMTP_LOGIN,
-        pass: process.env.MAILGUN_SMTP_PASSWORD,
-        api_key: process.env.MAILGUN_API_KEY,
-        domain: process.env.MAILGUN_DOMAIN
+        user: process.env.MAILGUN_USERNAME,
+        pass: process.env.MAILGUN_PASSWORD
     }
 });
 const handlebarOptions = {
