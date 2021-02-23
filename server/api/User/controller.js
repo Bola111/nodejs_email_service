@@ -31,6 +31,10 @@ exports.registerNewUser = async (req, res) => {
 exports.newDeposit = async (req, res) => {
     try {
         mailer.depositMail(req.body.email, req.body.name, req.body.deposit)
+        res.status(200).json({
+            msg: "Deposit Succesful",
+            data: req.body.deposit
+        })
     } catch (err) {
         console.log(err)
         res.status(500).json({

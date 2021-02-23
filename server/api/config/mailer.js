@@ -41,6 +41,7 @@ exports.depositMail = (email, name, deposit) => transporter.sendMail({
     subject: "New Deposits",
     template: "pendingdeposits",
     context: {
-        user:  name
+        user:  name,
+        deposit: deposit
     }
 });
