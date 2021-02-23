@@ -30,7 +30,7 @@ exports.registerNewUser = async (req, res) => {
 
 exports.newDeposit = async (req, res) => {
     try {
-        mailer.depositMail(req.body.email, req.body.name, req.body.deposit)
+        mailer.depositMail(req.body.email, req.body.name, req.body.deposit, req.body.date)
         res.status(200).json({
             msg: "Deposit Succesful",
             data: req.body.deposit
