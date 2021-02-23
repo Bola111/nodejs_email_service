@@ -2,8 +2,7 @@ const nodemailer = require('nodemailer');
 const hbs = require("nodemailer-express-handlebars")
 
 let transporter = nodemailer.createTransport({
-    server: process.env.MAILGUN_SMTP_SERVER,
-    port: process.env.MAILGUN_SMTP_PORT,
+    service: 'Mailgun',
     auth: {
       user: process.env.MAILGUN_SMTP_LOGIN,
       pass: process.env.MAILGUN_SMTP_PASSWORD
