@@ -25,17 +25,18 @@ transporter.use('compile', hbs(handlebarOptions));
 
 
 
-exports.welcomeMail = (email, name) => transporter.sendMail({
+exports.welcomeMail = (email, name, date) => transporter.sendMail({
     from: '"Chsterfinace" <support@checterfinance.com>',
     to: email,
     subject: "Account Creation",
     template: "welcome",
     context: {
-        user: name
+        user: name,
+        date: date
     }
 });
 
-exports.depositMail = (email, name, deposit) => transporter.sendMail({
+exports.depositMail = (email, name, deposit,) => transporter.sendMail({
     from: '"Chsterfinace" <support@checterfinance.com>',
     to: email,
     subject: "New Deposits",
