@@ -5,8 +5,8 @@ let transporter = nodemailer.createTransport({
     service: 'Mailgun',
     port: process.env.MAILGUN_SMTP_PORT,
     auth: {
-        user: process.env.GMAIL_EMAIL,
-        pass: process.env.GMAIL_PASSWORD,
+        user: process.env.MAILGUN_SMTP_LOGIN,
+        pass: process.env.MAILGUN_SMTP_PASSWORD,
         api_key: process.env.MAILGUN_API_KEY,
         domain: process.env.MAILGUN_DOMAIN
     }
