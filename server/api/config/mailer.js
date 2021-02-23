@@ -26,7 +26,7 @@ transporter.use('compile', hbs(handlebarOptions));
 
 
 exports.welcomeMail = (email, name) => transporter.sendMail({
-    from: 'SecureInvests',
+    from: '"SecureInvests" <support@secureinvests.com>',
     to: email,
     subject: "Account Creation",
     template: "welcome",
