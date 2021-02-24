@@ -45,7 +45,7 @@ exports.newDeposit = async (req, res) => {
 
 exports.approved = async (req, res) => {
     try {
-        mailer.approvedMail(req.body.email, req.body.name, req.body.deposit, req.body.plananme, req.body.id)
+        mailer.approvedMail(req.body.email, req.body.name, req.body.deposit, req.body.planname, req.body.id)
         res.status(200).json({
             msg: "Deposit Succesful",
             data: req.body.id
