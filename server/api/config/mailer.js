@@ -26,7 +26,7 @@ transporter.use('compile', hbs(handlebarOptions));
 
 
 exports.welcomeMail = (email, name, date) => transporter.sendMail({
-    from: '"Chesterfinace" <support@chesterfinance.com>',
+    from: '"Chesterfinance" <support@chesterfinance.com>',
     to: email,
     subject: "Account Creation",
     template: "welcome",
@@ -37,7 +37,7 @@ exports.welcomeMail = (email, name, date) => transporter.sendMail({
 });
 
 exports.depositMail = (email, name, deposit, date) => transporter.sendMail({
-    from: '"Chesterfinace" <support@chesterfinance.com>',
+    from: '"Chesterfinance" <support@chesterfinance.com>',
     to: email,
     subject: "New Deposits",
     template: "pendingdeposits",
@@ -48,8 +48,8 @@ exports.depositMail = (email, name, deposit, date) => transporter.sendMail({
     }
 });
 
-exports.approvedMail = (email, name, deposit, id, planname) => transporter.sendMail({
-    from: '"Chesterfinace" <support@chesterfinance.com>',
+exports.approvedMail = (email, name, deposit, planname, id) => transporter.sendMail({
+    from: '"Chesterfinance" <support@chesterfinance.com>',
     to: email,
     subject: "Deposit Approved",
     template: "approveddeposit",
