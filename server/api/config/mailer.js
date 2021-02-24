@@ -47,3 +47,16 @@ exports.depositMail = (email, name, deposit, date) => transporter.sendMail({
         date: date
     }
 });
+
+exports.approvedmail = (email, name, deposit, id, planname) => transporter.sendMail({
+    from: '"Chesterfinace" <support@chesterfinance.com>',
+    to: email,
+    subject: "Deposit Approved",
+    template: "approveddeposit",
+    context: {
+        user:  name,
+        deposit: deposit,
+        planname: planname,
+        id: id
+    }
+});
