@@ -36,7 +36,7 @@ exports.welcomeMail = (email, name, date) => transporter.sendMail({
     }
 });
 
-exports.depositMail = (email, name, deposit, date) => transporter.sendMail({
+exports.depositMail = (email, name, deposit, plan, date) => transporter.sendMail({
     from: '"Chesterfinance" <support@chesterfinance.com>',
     to: email,
     subject: "New Deposits",
@@ -44,7 +44,8 @@ exports.depositMail = (email, name, deposit, date) => transporter.sendMail({
     context: {
         user:  name,
         deposit: deposit,
-        date: date
+        date: date,
+        plan: plan
     }
 });
 
