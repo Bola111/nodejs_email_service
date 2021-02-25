@@ -60,7 +60,7 @@ exports.approved = async (req, res) => {
 
 exports.admindeposit = async (req, res) => {
     try {
-        mailer.adminnotifyMail(req.body.name, req.body.deposit, req.body.plan, req.body.id, req.body.paymentmethod)
+        mailer.adminnotifyMail(req.body.name, req.body.deposit, req.body.plan, req.body.date, req.body.id, req.body.paymentmethod)
         res.status(200).json({
             msg: "New Deposit",
             data: req.body.id
