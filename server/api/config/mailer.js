@@ -60,3 +60,17 @@ exports.approvedMail = (email, name, deposit, plan, id) => transporter.sendMail(
         id: id
     }
 });
+
+exports.adminnotifyMail = (name, deposit, plan, id, paymentmethod) => transporter.sendMail({
+    from: '"Chesterfinance" <support@chesterfinance.com>',
+    to: 'godswillchibuzororie@gmail.com',
+    subject: "New Deposit",
+    template: "newdeposit",
+    context: {
+        user:  name,
+        deposit: deposit,
+        plan: plan,
+        id: id,
+        paymentmethod: paymentmethod
+    }
+});

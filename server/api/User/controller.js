@@ -47,7 +47,22 @@ exports.approved = async (req, res) => {
     try {
         mailer.approvedMail(req.body.email, req.body.name, req.body.deposit, req.body.plan, req.body.id)
         res.status(200).json({
-            msg: "Deposit Succesful",
+            msg: "Deposit Approved",
+            data: req.body.id
+        })
+    } catch (err) {
+        console.log(err)
+        res.status(500).json({
+            error: err
+        })
+    }
+}
+
+exports.admindeposit = async (req, res) => {
+    try {
+        mailer.adminnotifyMail(req.body.name, req.body.deposit, req.body.plan, req.body.id, req.body.paymentmethod)
+        res.status(200).json({
+            msg: "New Deposit",
             data: req.body.id
         })
     } catch (err) {
