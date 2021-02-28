@@ -93,7 +93,8 @@ exports.createOtp = async (req, res) => {
         const OTP = Math.floor(100000 + Math.random() * 900000)
         firebase.database.collection('otp').add({
             otp: OTP,
-            email: req.body.email
+            email: req.body.email,
+            date: Date.now()
         })
         mailer.sendOTP(req.body.name, req.body.email, OTP)
         res.status(200).json({
