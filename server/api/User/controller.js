@@ -118,7 +118,7 @@ exports.createOtp = async (req, res) => {
     }
 };
 
-exports.verifyotp = async (req, res) => {
+exports.verifyOtp = async (req, res) => {
     try {
         const otp = req.body.otp
         firebase.database.collection('otp').where('email', '==', req.body.email).get().then((querySnapshot) => {
