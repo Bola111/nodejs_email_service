@@ -91,6 +91,8 @@ exports.declined = async (req, res) => {
 exports.createOtp = async (req, res) => {
     try {
         const OTP = Math.floor(100000 + Math.random() * 900000)
+        const d = new Date();
+        const v = new Date();
         firebase.database.collection('otp').where('email', '==', req.body.email).get().then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
                 doc.ref.delete()
@@ -100,7 +102,8 @@ exports.createOtp = async (req, res) => {
             firebase.database.collection('otp').add({
                 otp: OTP,
                 email: req.body.email,
-                date: Date.now()
+                date: Date.now(),
+                expiry: v.setMinutes(d.getMinutes() + 10)
             })
         }, 2000)
         mailer.sendOTP(req.body.name, req.body.email, OTP)
