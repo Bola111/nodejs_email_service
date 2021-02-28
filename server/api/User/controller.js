@@ -120,12 +120,12 @@ exports.createOtp = async (req, res) => {
 
 exports.verifyOtp = async (req, res) => {
     try {
-        const otp = req.body.otp
         firebase.database.collection('otp').where('email', '==', req.body.email).get().then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
                 const existingotp = doc.data().otp
                 const expiry = doc.data().expiry
-                if (otp === existingotp) {
+                const otp = req.body.otp
+                if (parseInt(otp) === existingotp) {
                     if (expiry > Date.now()) {
                         res.status(200).json({
                             message: 'Correct OTP',
@@ -134,7 +134,7 @@ exports.verifyOtp = async (req, res) => {
                     } else {
                         res.status(400).json({
                             message: 'Expired OTP',
-                            data: req.body.email
+                            data: req.body.email,
                         })
                     }
                 } else {
