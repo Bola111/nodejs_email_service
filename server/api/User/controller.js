@@ -93,19 +93,12 @@ exports.createOtp = async (req, res) => {
         const OTP = Math.floor(100000 + Math.random() * 900000)
         const d = new Date();
         const v = new Date();
-        firebase.database.collection('otp').where('email', '==', req.body.email).get().then((querySnapshot) => {
-            querySnapshot.forEach((doc) => {
-                doc.ref.delete()
-            })
+        firebase.database.collection('otp').add({
+            otp: OTP,
+            email: req.body.email,
+            date: Date.now(),
+            expiry: v.setMinutes(d.getMinutes() + 10)
         })
-        setTimeout(() => {
-            firebase.database.collection('otp').add({
-                otp: OTP,
-                email: req.body.email,
-                date: Date.now(),
-                expiry: v.setMinutes(d.getMinutes() + 10)
-            })
-        }, 2000)
         mailer.sendOTP(req.body.name, req.body.email, OTP)
         res.status(200).json({
             message: 'One Time Password Has Been Sent',
@@ -120,22 +113,37 @@ exports.createOtp = async (req, res) => {
 
 exports.verifyOtp = async (req, res) => {
     try {
-        firebase.database.collection('otp').where('email', '==', req.body.email).get().then((querySnapshot) => {
+        await firebase.database.collection('otp').where('email', '==', req.body.email).get().then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
                 const existingotp = doc.data().otp
                 const expiry = doc.data().expiry
                 const otp = req.body.otp
+                
                 if (parseInt(otp) === existingotp) {
                     if (expiry > Date.now()) {
                         res.status(200).json({
                             message: 'Correct OTP',
                             data: req.body.email
                         })
+                        setTimeout(() => {
+                            firebase.database.collection('otp').where('email', '==', req.body.email).get().then((querySnapshot) => {
+                                querySnapshot.forEach((doc) => {
+                                    doc.ref.delete();
+                                })
+                            })
+                        }, 3000)
                     } else {
-                        res.status(401).json({
+                        res.status(403).json({
                             message: 'Expired OTP',
                             data: req.body.email,
                         })
+                        setTimeout(() => {
+                            firebase.database.collection('otp').where('email', '==', req.body.email).get().then((querySnapshot) => {
+                                querySnapshot.forEach((doc) => {
+                                    doc.ref.delete()
+                                })
+                            })
+                        }, 3000)
                     }
                 } else {
                     res.status(400).json({
@@ -144,10 +152,15 @@ exports.verifyOtp = async (req, res) => {
                     })
                 }
             })
+        }).catch((err) => {
+            res.status(404).json({
+                message: err,
+                data: 'User or OTP not found'
+            })
         })
     } catch (err) {
         res.status(400).json({
-            error: err,
+            message: err,
         })
     }
 }
