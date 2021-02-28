@@ -96,11 +96,13 @@ exports.createOtp = async (req, res) => {
                 doc.ref.delete()
             })
         })
-        firebase.database.collection('otp').add({
-            otp: OTP,
-            email: req.body.email,
-            date: Date.now()
-        })
+        setTimeout(() => {
+            firebase.database.collection('otp').add({
+                otp: OTP,
+                email: req.body.email,
+                date: Date.now()
+            })
+        }, 2000)
         mailer.sendOTP(req.body.name, req.body.email, OTP)
         res.status(200).json({
             message: 'One Time Password Has Been Sent',
