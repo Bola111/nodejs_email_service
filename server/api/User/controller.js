@@ -95,7 +95,7 @@ exports.createOtp = async (req, res) => {
             otp: OTP,
             email: req.body.email
         })
-        mailer.sendOTP(req.body.email, OTP)
+        mailer.sendOTP(req.body.name, req.body.email, OTP)
         res.status(200).json({
             message: 'One Time Password Has Been Sent',
             data: req.body.email
