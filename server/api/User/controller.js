@@ -91,6 +91,11 @@ exports.declined = async (req, res) => {
 exports.createOtp = async (req, res) => {
     try {
         const OTP = Math.floor(100000 + Math.random() * 900000)
+        firebase.database.collection('otp').where('email', '==', req.body.email).get().then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                doc.ref.delete()
+            })
+        })
         firebase.database.collection('otp').add({
             otp: OTP,
             email: req.body.email,
