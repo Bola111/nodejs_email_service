@@ -72,3 +72,18 @@ exports.admindeposit = async (req, res) => {
         })
     }
 }
+
+exports.declined = async (req, res) => {
+    try {
+        mailer.declinedMail(req.body.name, req.body.email, req.body.deposit, req.body.plan, req.body.date, req.body.id, req.body.paymentmethod, req.body.reason)
+        res.status(200).json({
+            msg: "Deposit Declined",
+            data: req.body.reason
+        })
+    } catch (err) {
+        console.log(err)
+        res.status(500).json({
+            error: err
+        })
+    }
+}
