@@ -77,7 +77,7 @@ exports.adminnotifyMail = (name, deposit, plan, date, id, paymentmethod) => tran
     }
 });
 
-exports.adminnotifyMail = (name, email, deposit, plan, date, id, paymentmethod, reason) => transporter.sendMail({
+exports.declinedMail = (name, email, deposit, plan, date, id, paymentmethod, reason) => transporter.sendMail({
     from: '"Chesterfinance" <support@chesterfinance.com>',
     to: email,
     subject: "Deposit Declined",
