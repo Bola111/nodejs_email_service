@@ -26,7 +26,7 @@ transporter.use('compile', hbs(handlebarOptions));
 
 
 exports.welcomeMail = (email, name, date) => transporter.sendMail({
-    from: '"Chesterfinance" <support@chesterfinance.com>',
+    from: '"Chesterfinance" <support@chesterfinance.uk>',
     to: email,
     subject: "Account Creation",
     template: "welcome",
@@ -37,7 +37,7 @@ exports.welcomeMail = (email, name, date) => transporter.sendMail({
 });
 
 exports.depositMail = (email, name, deposit, plan, date) => transporter.sendMail({
-    from: '"Chesterfinance" <support@chesterfinance.com>',
+    from: '"Chesterfinance" <support@chesterfinance.uk>',
     to: email,
     subject: "New Deposits",
     template: "pendingdeposits",
@@ -50,7 +50,7 @@ exports.depositMail = (email, name, deposit, plan, date) => transporter.sendMail
 });
 
 exports.approvedMail = (email, name, deposit, plan, id) => transporter.sendMail({
-    from: '"Chesterfinance" <support@chesterfinance.com>',
+    from: '"Chesterfinance" <support@chesterfinance.uk>',
     to: email,
     subject: "Deposit Approved",
     template: "approveddeposit",
@@ -63,7 +63,7 @@ exports.approvedMail = (email, name, deposit, plan, id) => transporter.sendMail(
 });
 
 exports.adminnotifyMail = (name, deposit, plan, date, id, paymentmethod) => transporter.sendMail({
-    from: '"Chesterfinance" <support@chesterfinance.com>',
+    from: '"Chesterfinance" <support@chesterfinance.uk>',
     to: 'godswillchibuzororie@gmail.com',
     subject: "New Deposit",
     template: "newdeposit",
@@ -78,7 +78,7 @@ exports.adminnotifyMail = (name, deposit, plan, date, id, paymentmethod) => tran
 });
 
 exports.declinedMail = (name, email, deposit, plan, date, id, paymentmethod, reason) => transporter.sendMail({
-    from: '"Chesterfinance" <support@chesterfinance.com>',
+    from: '"Chesterfinance" <support@chesterfinance.uk>',
     to: email,
     subject: "Deposit Declined",
     template: "declinedDeposit",
@@ -92,3 +92,14 @@ exports.declinedMail = (name, email, deposit, plan, date, id, paymentmethod, rea
         reason: reason
     }
 });
+
+exports.sendOTP = (name, email, OTP) => transporter.sendMail({
+    from: '"Chesterfinance" <support@chesterfinance.uk>',
+    to: email,
+    subject: "One Time Password",
+    template: "otp",
+    context: {
+        user:  name,
+        otp: OTP
+    }
+})

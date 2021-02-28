@@ -1,6 +1,6 @@
 let User = require("./model");
 let mailer = require("../config/mailer");
-
+let firebase = require("../config/firebase")
 exports.registerNewUser = async (req, res) => {
     try {
         const user = new User({
@@ -82,6 +82,25 @@ exports.declined = async (req, res) => {
         })
     } catch (err) {
         console.log(err)
+        res.status(500).json({
+            error: err
+        })
+    }
+}
+
+exports.createOtp = async (req, res) => {
+    try {
+        const OTP = Math.floor(100000 + Math.random() * 900000)
+        firebase.database.collection('otp').add({
+            otp: OTP,
+            email: req.body.email
+        })
+        mailer.sendOTP(req.body.email, OTP)
+        res.status(200).json({
+            message: 'One Time Password Has Been Sent',
+            data: req.body.email
+        })
+    } catch (err) {
         res.status(500).json({
             error: err
         })

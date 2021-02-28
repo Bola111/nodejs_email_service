@@ -125,7 +125,7 @@
             <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
                 <tr>
                     <td bgcolor="#ffffff" align="center" valign="top" style="padding: 40px 20px 20px 20px; border-radius: 4px 4px 0px 0px; color: #111111; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 48px; font-weight: 400; letter-spacing: 4px; line-height: 48px;">
-                        <h1 style="font-size: 48px; font-weight: 400; margin: 2;">Deposit Declined</h1> <img src="https://uploads.codesandbox.io/uploads/user/7c20fdde-ba54-4212-9b32-d1d1dfca6321/nA2z-Chester+Fianance+3r4.png" width="225" height="120" style="display: block; border: 0px; margin-bottom: -2em; margin-top: -1em" />
+                        <h1 style="font-size: 48px; font-weight: 400; margin: 2;">One Time Password</h1> <img src="https://uploads.codesandbox.io/uploads/user/7c20fdde-ba54-4212-9b32-d1d1dfca6321/nA2z-Chester+Fianance+3r4.png" width="225" height="120" style="display: block; border: 0px; margin-bottom: -2em; margin-top: -1em" />
                     </td>
                 </tr>
             </table>
@@ -136,18 +136,14 @@
             <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
                 <tr>
                     <td bgcolor="#ffffff" align="left" style="padding: 20px 30px 40px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;">
-                        <p style="margin: 0;">Good day {{user}}, Your deposit of ${{deposit}} for {{plan}} has been declined<br><br><p>The Declined Contract details are as follows: <ul><li>
-                        Contract Name: {{plan}}
+                        <p style="margin: 0;">Good day {{user}}, Please verify that it is you.  
+                          <br><br>
+                          You are been sent a One Time Password because you turned on Two factor Authentication In your Account Settings
+                          <br><br><p>Your one time password is <ul><li>
+                        OTP: {{otp}}
                         </li>
-                        <li>
-                        Deposit Amount: ${{deposit}}
-                        </li>
-                        <li>
-                        Transaction Id: {{id}}
-                        </li>
-                        <li>
-                        Reason: {{reason}}
-                        </li>
+                        <br>
+                        <p>This token will expire in the next 10 minutes. If you didn't request for this, someone else might have your password but your account is still safe and secure</p>
                     </ul> </p> </p>
                    </td>
                 </tr>
@@ -158,6 +154,7 @@
                                 <td bgcolor="#ffffff" align="center" style="padding: 20px 30px 60px 30px;">
                                     <table border="0" cellspacing="0" cellpadding="0">
                                         <tr>
+                                            <p>Didn't request for this? <a href="chesterfinance.uk">Contact us</a></p>
                                         </tr>
                                     </table>
                                 </td>
@@ -166,27 +163,7 @@
                     </td>
                 </tr> <!-- COPY -->
                 <tr>
-                    <td bgcolor="#ffffff" align="left" style="padding: 0px 30px 20px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;">
-                        <p>Wrong Reason? <a href="chesterfinance.uk">Contact Us</a> </p>
-                        <p style="margin: 0;">If you have any questions, just reply to this email—we're always happy to help out.</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td bgcolor="#ffffff" align="left" style="padding: 0px 30px 40px 30px; border-radius: 0px 0px 4px 4px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;">
-                        <p style="margin: 0;">Thanks for choosing our service,<br>Chester Finance Team</p>
-                    </td>
-                </tr>
-            </table>
-        </td>
-    </tr>
-    <tr>
-        <td bgcolor="#f4f4f4" align="center" style="padding: 30px 10px 0px 10px;">
-            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
-                <tr>
-                    <td bgcolor="#FFECD1" align="center" style="padding: 30px 30px 30px 30px; border-radius: 4px 4px 4px 4px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;">
-                        <h2 style="font-size: 20px; font-weight: 400; color: #111111; margin: 0;">Need more help?</h2>
-                        <p style="margin: 0;"><a href="#" target="_blank" style="color: #3cbeb2;">We’re here to help you out</a></p>
-                    </td>
+                    <!--  -->
                 </tr>
             </table>
         </td>
