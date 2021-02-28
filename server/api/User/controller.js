@@ -132,7 +132,7 @@ exports.verifyOtp = async (req, res) => {
                             data: req.body.email
                         })
                     } else {
-                        res.status(400).json({
+                        res.status(401).json({
                             message: 'Expired OTP',
                             data: req.body.email,
                         })
@@ -146,6 +146,8 @@ exports.verifyOtp = async (req, res) => {
             })
         })
     } catch (err) {
-
+        res.status(400).json({
+            error: err,
+        })
     }
 }
